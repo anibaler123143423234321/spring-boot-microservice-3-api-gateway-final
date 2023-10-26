@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService {
 
         if (existingUser.isPresent()) {
             User updatedUser = existingUser.get();
-            updatedUser.setRole(user.getRole());
+            updatedUser.setNegocioId(user.getNegocioId());
             return userRepository.save(updatedUser);
         } else {
             return null; // La compra no existe
