@@ -61,6 +61,7 @@ public class SecurityConfig{
                 .antMatchers(HttpMethod.GET, "/gateway/compra/all").hasAnyRole(Role.USER.name(),Role.ADMIN.name(), Role.SUPERADMIN.name())
                 .antMatchers(HttpMethod.GET, "/gateway/negocios/").permitAll()
                 .antMatchers(HttpMethod.GET, "/gateway/negocios/{id}").hasAnyRole(Role.USER.name(),Role.ADMIN.name(), Role.SUPERADMIN.name())
+                .antMatchers(HttpMethod.POST, "/gateway/negocios/").hasAnyRole(Role.USER.name(),Role.ADMIN.name(), Role.SUPERADMIN.name())
 
                 .antMatchers(HttpMethod.GET, "/gateway/producto/{productoId}").hasAnyRole(Role.USER.name(),Role.ADMIN.name(), Role.SUPERADMIN.name())
                 .antMatchers(HttpMethod.POST, "/gateway/compra").hasAnyRole(Role.USER.name(),Role.ADMIN.name(), Role.SUPERADMIN.name())
@@ -74,7 +75,6 @@ public class SecurityConfig{
 
                 .antMatchers("/gateway/producto/**").hasAnyRole(Role.ADMIN.name(), Role.SUPERADMIN.name())
                 //.antMatchers(HttpMethod.PUT, "/api/user/{id}").permitAll()
-                .antMatchers("/gateway/negocios/**").hasAnyRole(Role.ADMIN.name(), Role.SUPERADMIN.name())
                 .antMatchers("/gateway/categoria/**").hasAnyRole(Role.ADMIN.name(), Role.SUPERADMIN.name())
                 .anyRequest().authenticated();
 
