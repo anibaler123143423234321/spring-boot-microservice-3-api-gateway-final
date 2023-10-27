@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -79,5 +80,16 @@ public class ProductoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    @GetMapping("/pornegocio/{negocioId}")
+    public ResponseEntity<?> getProductosPorNegocio(@PathVariable Long negocioId) {
+        try {
+            List<Object> productos = productoServiceRequest.getProductosPorNegocio(negocioId);
+            return ResponseEntity.ok(productos);
+        } catch (FeignException.NotFound e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 
 }

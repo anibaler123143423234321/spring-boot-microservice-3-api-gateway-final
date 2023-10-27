@@ -45,4 +45,7 @@ public interface ProductoServiceRequest {
             @RequestBody Object nuevoProducto
     );
 
+    // Nuevo método para buscar productos por negocio
+    @GetMapping("/pornegocio/{negocioId}")
+    List<Object> getProductosPorNegocio(@PathVariable("negocioId") Long negocioId);
 }
