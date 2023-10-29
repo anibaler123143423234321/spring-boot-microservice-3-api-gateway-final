@@ -73,6 +73,8 @@ public class SecurityConfig{
                 .antMatchers(HttpMethod.GET, "/gateway/producto/pornegocio/{negocioId}").hasAnyRole(Role.USER.name(),Role.ADMIN.name(), Role.SUPERADMIN.name())
 
                 .antMatchers(HttpMethod.GET, "/gateway/producto").hasAnyRole(Role.USER.name(),Role.ADMIN.name(), Role.SUPERADMIN.name())
+                .antMatchers(HttpMethod.POST, "/gateway/producto/comprar/{productoId}").hasAnyRole(Role.USER.name(),Role.ADMIN.name(), Role.SUPERADMIN.name())
+
                 .antMatchers(HttpMethod.PUT, "/gateway/producto/{productoId}").hasAnyRole(Role.USER.name(),Role.ADMIN.name(), Role.SUPERADMIN.name())
                 .antMatchers(HttpMethod.GET, "/gateway/categoria").hasAnyRole(Role.USER.name(),Role.ADMIN.name(), Role.SUPERADMIN.name())
 

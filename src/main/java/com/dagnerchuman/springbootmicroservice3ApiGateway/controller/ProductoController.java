@@ -92,4 +92,16 @@ public class ProductoController {
     }
 
 
+    // Nuevo endpoint para comprar un producto por su ID
+    @PostMapping("/comprar/{productoId}")
+    public ResponseEntity<String> comprarProducto(@PathVariable Long productoId, @RequestParam int cantidad) {
+        try {
+            String respuestaCompra = productoServiceRequest.comprarProducto(productoId, cantidad);
+            return ResponseEntity.ok(respuestaCompra);
+        } catch (FeignException.BadRequest e) {
+            return ResponseEntity.badRequest().body("No hay suficiente stock para la compra");
+        } catch (FeignException.NotFound e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }
