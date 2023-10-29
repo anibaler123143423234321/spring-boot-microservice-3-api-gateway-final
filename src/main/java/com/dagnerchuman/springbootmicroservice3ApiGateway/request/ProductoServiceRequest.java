@@ -50,7 +50,4 @@ public interface ProductoServiceRequest {
     List<Object> getProductosPorNegocio(@PathVariable("negocioId") Long negocioId);
 
 
-    // Nuevo método para comprar un producto por su ID
-    @PostMapping("/comprar/{productoId}")
-    String comprarProducto(@PathVariable("productoId") Long productoId, @RequestParam int cantidad);
 }
