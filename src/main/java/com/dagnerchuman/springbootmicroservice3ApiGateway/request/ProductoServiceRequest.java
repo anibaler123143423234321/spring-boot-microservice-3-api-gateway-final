@@ -49,5 +49,6 @@ public interface ProductoServiceRequest {
     @GetMapping("/pornegocio/{negocioId}")
     List<Object> getProductosPorNegocio(@PathVariable("negocioId") Long negocioId);
 
-
+    @GetMapping("/porcategoria/{categoriaId}")
+    List<Object> getProductosPorCategoria(@PathVariable("categoriaId") Long categoriaId);
 }

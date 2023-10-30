@@ -91,5 +91,14 @@ public class ProductoController {
         }
     }
 
-
+    // Nuevo endpoint para obtener productos por categoría
+    @GetMapping("/porcategoria/{categoriaId}")
+    public ResponseEntity<?> getProductosPorCategoria(@PathVariable Long categoriaId) {
+        try {
+            List<Object> productos = productoServiceRequest.getProductosPorCategoria(categoriaId);
+            return ResponseEntity.ok(productos);
+        } catch (FeignException.NotFound e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }
