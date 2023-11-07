@@ -28,4 +28,6 @@ public interface UserService {
     void deleteUserByUsername(String username); // Agrega este método
 
     User updateUser(Long id, User user);
+
+    void deleteUserById(Long id);
 }

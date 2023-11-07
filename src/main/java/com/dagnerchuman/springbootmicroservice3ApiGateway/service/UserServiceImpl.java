@@ -108,5 +108,8 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    public void deleteUserById(Long userId) {
+        userRepository.deleteById(userId);
+    }
 
 }
