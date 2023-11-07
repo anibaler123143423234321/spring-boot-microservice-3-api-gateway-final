@@ -96,16 +96,53 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(Long id, User user) {
-        Optional<User> existingUser = userRepository.findById(id);
+    public User updateUser(Long id, User updateUser) {
+        Optional<User> existingUserOptional = userRepository.findById(id);
 
-        if (existingUser.isPresent()) {
-            User updatedUser = existingUser.get();
-            updatedUser.setNegocioId(user.getNegocioId());
+        if (existingUserOptional.isPresent()) {
+            User existingUser = existingUserOptional.get();
+
+            // Llamar al nuevo método para actualizar los atributos
+            User updatedUser = updateUserAttributes(existingUser, updateUser);
+
             return userRepository.save(updatedUser);
         } else {
-            return null; // La compra no existe
+            return null;
         }
+    }
+
+
+    // Nuevo método para actualizar atributos de manera más genérica
+    private User updateUserAttributes(User existingUser, User updateUser) {
+        if (updateUser.getUsername() != null) {
+            existingUser.setUsername(updateUser.getUsername());
+        }
+        if (updateUser.getTelefono() != null) {
+            existingUser.setTelefono(updateUser.getTelefono());
+        }
+        if (updateUser.getEmail() != null) {
+            existingUser.setEmail(updateUser.getEmail());
+        }
+        if (updateUser.getNegocioId() != null) {
+            existingUser.setNegocioId(updateUser.getNegocioId());
+        }
+        if (updateUser.getTipoDoc() != null) {
+            existingUser.setTipoDoc(updateUser.getTipoDoc());
+        }
+        if (updateUser.getPicture() != null) {
+            existingUser.setPicture(updateUser.getPicture());
+        }
+        if (updateUser.getDepartamento() != null) {
+            existingUser.setDepartamento(updateUser.getDepartamento());
+        }
+        if (updateUser.getProvincia() != null) {
+            existingUser.setProvincia(updateUser.getProvincia());
+        }
+        if (updateUser.getDistrito() != null) {
+            existingUser.setDistrito(updateUser.getDistrito());
+        }
+
+        return existingUser;
     }
 
     public void deleteUserById(Long userId) {
