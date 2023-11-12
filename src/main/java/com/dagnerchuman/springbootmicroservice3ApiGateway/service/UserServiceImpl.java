@@ -115,6 +115,12 @@ public class UserServiceImpl implements UserService {
     // Nuevo método para actualizar atributos de manera más genérica
     private User updateUserAttributes(User existingUser, User updateUser) {
         if (updateUser.getUsername() != null) {
+            existingUser.setNombre(updateUser.getNombre());
+        }
+        if (updateUser.getUsername() != null) {
+            existingUser.setApellido(updateUser.getApellido());
+        }
+        if (updateUser.getUsername() != null) {
             existingUser.setUsername(updateUser.getUsername());
         }
         if (updateUser.getTelefono() != null) {

@@ -26,12 +26,12 @@ public class AuthenticationController {
     {
         if(userService.findByUsername(user.getUsername()).isPresent())
         {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>("Username already exists", HttpStatus.CONFLICT);
         }
 
         if(userService.findByEmail(user.getEmail()).isPresent())
         {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>("Email already exists", HttpStatus.CONFLICT);
         }
 
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
